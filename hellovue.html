@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <h2>This is for my {{thisClass}} class...</h2>
+
+        <!-- Can do it either way (see two lines below): -->
+        <!-- <p>{{message.toUpperCase()}}</p> -->
+        <p>{{message | uppercase}}</p>
+        <p>The message is {{message.length}} letters long.</p>
+        <p v-text="message"></p>
+
+        <p>
+          My favorite animal is a {{favoriteAnimal}}!
+        </p>
+
+        <button type="button" name="button" v-on:click="addExclamation">Add !!!</button>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Ali\'s first VUE!',
+                favoriteAnimal: 'dog',
+                thisClass: 'Web Programming',
+            },
+            methods: {
+              addExclamation: function(event) {
+                this.message += '!!!'
+              }
+            },
+            filters: {
+              uppercase: function(string) {
+                return string.toUpperCase()
+              }
+            }
+        })
+    </script>
+
+</body>
+</html>
